@@ -12,7 +12,6 @@ def convert_image_to_pdf(image_path, pdf_path):
     pdf.output(pdf_path, "F")
 
 def convert_pdf_to_image(pdf_path, image_path):
-    images = []
     pdf = Image.open(pdf_path)
     pdf.save(image_path, "JPEG")
 
