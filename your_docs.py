@@ -4,12 +4,13 @@ from fpdf import FPDF
 import os
 
 
-def convert_image_to_pdf(image_path, pdf_path):
-    image = Image.open(image_path)
+def convert_image_to_pdf(image_file, pdf_path):
+    image = Image.open(image_file)
     pdf = FPDF()
     pdf.add_page()
-    pdf.image(image_path, 0, 0, pdf.w, pdf.h)
+    pdf.image(image_file, 0, 0, pdf.w, pdf.h)
     pdf.output(pdf_path, "F")
+
 
 def convert_pdf_to_image(pdf_path, image_path):
     pdf = Image.open(pdf_path)
