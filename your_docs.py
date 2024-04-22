@@ -2,6 +2,7 @@ import streamlit as st
 from PIL import Image
 from fpdf import FPDF
 import os
+from pdf2image import convert_from_path
 
 
 def convert_image_to_pdf(image_file, pdf_path):
@@ -13,8 +14,10 @@ def convert_image_to_pdf(image_file, pdf_path):
 
 
 def convert_pdf_to_image(pdf_path, image_path):
-    pdf = Image.open(pdf_path)
-    pdf.save(image_path, "JPEG")
+    images = convert_from_path(pdf_path)
+    for i, image in enumerate(images):
+        image.save(f"{image_path}_{i}.jpg", "JPEG")
+        
 
 def main():
     st.title("Image ↔️ PDF Converter")
